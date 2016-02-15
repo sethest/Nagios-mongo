@@ -27,8 +27,8 @@ Nagios是一個企業級的開源軟件，可用於監控網絡和硬體設施�
 
 ## Scenario  
 遠端監控 services時,  
-nagios-server (伺服器端 = 監控端)會安裝 : nagios-core, nagios-plugins, NRPE-plugins  
-nagios-client (用戶端 = 被監控端)會安裝 : nagios-plugins, NRPE  
+nagios-server (伺服器端 = 監控端)會安裝 : nagios-core, nagios-plugins, nrpe-plugins  
+nagios-client (用戶端 = 被監控端)會安裝 : nagios-plugins, nrpe  
 註：core-4 好像沒有下載 xinetd 服務 (用來交握)  
 
 #### Nagios server  
@@ -45,14 +45,14 @@ IP Address : 192.168.1.104
 Hostname : nagios-client
 
 
-## Prerequisites   
+## Prerequisites  (nagios-server)  
 nagios-server 需要安裝 LAMP ，否則會出錯。(有參考其他的blog)
 ```
 sudo apt-get update
 sudo apt-get -y install wget build-essential apache2 apache2-utils unzip php5 openssl perl make php5-gd wget libgd2-xpm-dev libapache2-mod-php5 libperl-dev libssl-dev daemon 
 ```
 
-## Create Nagios User And Group  
+## Create Nagios User And Group  (nagios-server)  
 新增一個 nagios 使用者
 ```
 sudo useradd -m nagios
@@ -66,7 +66,7 @@ sudo usermod -a -G nagcmd nagios
 sudo usermod -a -G nagcmd www-data
 ```
 
-## Download Nagios And Plugins
+## Download Nagios And Plugins  (nagios-server)  
 到 http://sourceforge.net/projects/nagios/files/  下載最新的 nagios-core  
 ```
 cd ~
@@ -80,7 +80,7 @@ cd ~
 wget http://www.nagios-plugins.org/download/nagios-plugins-2.1.1.tar.gz
 ```
 
-## Install Nagios And Plugin
+## Install Nagios And Plugin  (nagios-server)  
 
 Install nagios
 ```
@@ -125,7 +125,7 @@ sudo make
 sudo make install
 ```
 
-# Configure Nagios  
+## Configure Nagios  (nagios-server)  
 Nagios 的配置文件樣本，位於 /usr/local/nagios/etc 目錄下。 這些配置文件應該可以正常工作了。
 然而，你可以設定 /usr/local/nagios/etc/objects/contacts.cfg 裡面的 email address，方便接收到示警。  
 
@@ -166,8 +166,45 @@ Enable Apache’s rewrite and cgi modules:
       sudo service nagios start
       sudo ln -s /etc/init.d/nagios /etc/rcS.d/S99nagios
 
-# Access Nagios Web Interface
+## Access Nagios Web Interface    (nagios-server)  
 打開瀏覽器，並導向到 http://[nagios-server-ip]/nagios  
 帳號 : nagiosadmin  
 密碼 : (之前步驟所建立的)  
 
+## Add Monitoring targets to Nagios server  (nagios-client)  
+加入被監控對象 nagios-client
+nagios-client 需要安裝 nrpe and nagios-plugins
+
+```
+sudo apt-get update
+sudo apt-get -y install nagios-nrpe-server nagios-plugins
+```
+
+## Configure Monitoring targets  (nagios-client)  
+
+在 nrpe.cfg 裡，設定 nagios-server的IP。
+
+    sudo nano /etc/nagios/nrpe.cfg
+
+
+>
+```
+[...]
+## Find the following line and add the Nagios server IP ##
+allowed_hosts=127.0.0.1 192.168.1.103
+[...]
+```
+
+啟動 nrpe
+
+    sudo /etc/init.d/nagios-nrpe-server restart
+    
+    
+    
+##  go back to your Nagios server (nagios-server)  
+    
+    sudo nano /usr/local/nagios/etc/nagios.cfg
+    
+    
+    
+    
