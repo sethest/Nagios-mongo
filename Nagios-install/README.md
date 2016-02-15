@@ -32,14 +32,14 @@ nagios-client (用戶端 = 被監控端)會安裝 : nagios-plugins, nrpe
 
 * #### Nagios server  
 Operating system : Ubuntu 14.04.3 Server  
-Description : 筆電的 VM (參考 nagios01/Vagrantfile)  
+Description : 筆電的 VM (自行建立)  
 IP Address : 192.168.1.103  
 Hostname : nagios-server    
 
 
 * #### Nagios client  
 Operating System : Ubuntu 14.04.3 Server  
-Description : 筆電的 VM (參考 nagios02/Vagrantfile)  
+Description : 筆電的 VM (自行建立)  
 IP Address : 192.168.1.104  
 Hostname : nagios-client  
 
