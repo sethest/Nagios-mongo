@@ -44,15 +44,11 @@ IP Address : 192.168.1.104
 Hostname : nagios-client
 
 
-## Prerequisites  
-
-1. 確定你的 nagios-server 安裝了 LAMP 
-2.   
-
-    sss
-    sudo apt-get -y install build-essential libgd2-xpm-dev apache2-utils unzip
-    sudo apt-get -y install wget build-essential apache2 php5 openssl perl make php5-gd wget libgd2-xpm-dev libapache2-mod-php5 libperl-dev libssl-dev daemon  #(參考其他人的 blog ， 因為原本的沒有安裝 apache2 ，會出錯。)
-
+## Prerequisites   
+nagios-server 需要安裝 LAMP 
+```
+sudo apt-get -y install wget build-essential apache2 apache2-utils unzip php5 openssl perl make php5-gd wget libgd2-xpm-dev libapache2-mod-php5 libperl-dev libssl-dev daemon  #(參考其他人的 blog ， 因為原本的沒有安裝 apache2 ，會出錯。)
+```
 
 
 
