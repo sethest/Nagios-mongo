@@ -31,14 +31,14 @@ nagios-server (伺服器端 = 監控端)會安裝 : nagios-core, nagios-plugins,
 nagios-client (用戶端 = 被監控端)會安裝 : nagios-plugins, nrpe  
 註：core-4 好像沒有下載 xinetd 服務 (用來交握)  
 
-* Nagios server  
+* #### Nagios server  
 Operating system : Ubuntu 14.04.3 Server  
 Description : 筆電的 VM (參考 nagios01/Vagrantfile)  
 IP Address : 192.168.1.103  
 Hostname : nagios-server    
 
 
-* Nagios client  
+* #### Nagios client  
 Operating System : Ubuntu 14.04.3 Server  
 Description : 筆電的 VM (參考 nagios02/Vagrantfile)  
 IP Address : 192.168.1.104  
