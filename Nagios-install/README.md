@@ -78,3 +78,27 @@ Nagios plugins 讓你透過 Nagios 監控 hosts, devices, services, protocols, a
 wget http://www.nagios-plugins.org/download/nagios-plugins-2.1.1.tar.gz
 ```
 
+## Install Nagios And Plugin
+* Install nagios
+```
+tar xzf nagios-4.1.1.tar.gz
+rm nagios-4.1.1.tar.gz
+cd nagios-4.1.1/
+sudo ./configure --with-command-group=nagcmd
+sudo make all
+sudo make install
+sudo make install-init
+sudo make install-config
+sudo make install-commandmode
+   
+# Install Nagios Web interface
+sudo /usr/bin/install -c -m 644 sample-config/httpd.conf /etc/apache2/sites-enabled/nagios.conf
+sudo ls -l /etc/apache2/sites-enabled/
+```
+
+
+
+
+
+
+
