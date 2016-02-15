@@ -170,6 +170,9 @@ Enable Apache’s rewrite and cgi modules:
 帳號 : nagiosadmin  
 密碼 : (之前步驟所建立的)  
 
+  
+
+
 ## Add Monitoring targets to Nagios server  (nagios-client)  
 加入被監控對象 nagios-client
 nagios-client 需要安裝 nrpe and nagios-plugins
