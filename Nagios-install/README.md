@@ -69,36 +69,105 @@ sudo usermod -a -G nagcmd www-data
 ## Download Nagios And Plugins
 到 http://sourceforge.net/projects/nagios/files/  下載最新的 nagios-core  
 ```
+cd ~
 wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.1.1.tar.gz
 ```
 
 到 http://nagios-plugins.org/download/   下載最新的 nagios-plugin  
 Nagios plugins 讓你透過 Nagios 監控 hosts, devices, services, protocols, and applications
 ```
+cd ~
 wget http://www.nagios-plugins.org/download/nagios-plugins-2.1.1.tar.gz
 ```
 
 ## Install Nagios And Plugin
-* Install nagios
+
+Install nagios
 ```
+cd ~
 tar xzf nagios-4.1.1.tar.gz
 rm nagios-4.1.1.tar.gz
-cd nagios-4.1.1/
+cd ~/nagios-4.1.1/
 sudo ./configure --with-command-group=nagcmd
 sudo make all
 sudo make install
 sudo make install-init
 sudo make install-config
 sudo make install-commandmode
-   
-# Install Nagios Web interface
+```   
+
+Install Nagios Web interface
+```
+cd ~/nagios-4.1.1/
 sudo /usr/bin/install -c -m 644 sample-config/httpd.conf /etc/apache2/sites-enabled/nagios.conf
-sudo ls -l /etc/apache2/sites-enabled/
+sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+```
+
+Check if nagios.conf is placed in /etc/apache2/sites-enabled directory.
+```
+sudo ls -l /etc/apache2/sites-enabled/    
+```
+
+Restart apache web server
+```
+echo "ServerName localhost"  | sudo tee -a /etc/apache2/apache2.conf
+sudo service apache2 restart
+```
+
+Install Nagios plugins
+```
+cd ~
+tar xzf nagios-plugins-2.1.1.tar.gz
+rm nagios-plugins-2.1.1.tar.gz
+cd nagios-plugins-2.1.1/
+sudo ./configure --with-nagios-user=nagios --with-nagios-group=nagios
+sudo make
+sudo make install
+```
+
+# Configure Nagios  
+Nagios 的配置文件樣本，位於 /usr/local/nagios/etc 目錄下。 這些配置文件應該可以正常工作了。
+然而，你可以設定 /usr/local/nagios/etc/objects/contacts.cfg 裡面的 email address，方便接收到示警。  
+
+      sudo nano /usr/local/nagios/etc/objects/contacts.cfg
+
+
+若想限制登入nagios console的 IP，可以在 /etc/apache2/sites-enabled/nagios.conf 裡面設定
+
+      sudo nano /etc/apache2/sites-enabled/nagios.conf
+
+>
+```
+## Comment the following lines ##
+#   Order allow,deny
+#   Allow from all
+## Uncomment and Change lines as shown below ##
+Order deny,allow
+Deny from all
+Allow from 127.0.0.1 192.168.1.103 192.168.1.104
 ```
 
 
+Enable Apache’s rewrite and cgi modules:
 
+      sudo a2enmod rewrite
+      sudo a2enmod cgi
 
+重啟 apache2
 
+      sudo service apache2 restart
+   
+檢查 nagios.cfg 有沒有語法錯誤
 
+      sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg   
+
+如果沒有錯誤, 啟動 nagios 服務，並設成登入自動啟動。
+
+      sudo service nagios start
+      sudo ln -s /etc/init.d/nagios /etc/rcS.d/S99nagios
+
+# Access Nagios Web Interface
+打開瀏覽器，並導向到 http://[nagios-server-ip]/nagios  
+帳號 : nagiosadmin  
+密碼 : (之前步驟所建立的)  
 
