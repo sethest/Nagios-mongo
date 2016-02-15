@@ -7,7 +7,6 @@
 軟體: nagios-core 4.1.1, nagios-plugins 2.1.1  
 成果:  
 附檔:  
-參考: http://sites.box293.com/nagios/guides/installing-nagios/4-0-x/ubuntu-14-04    (英文blog)   
 註 : "環境" 的安裝步驟不在此贅述，請自行安裝 。 本範例 ~ 的路徑為: /home/vagrant  
 
 ## About Nagios  
@@ -171,6 +170,9 @@ Enable Apache’s rewrite and cgi modules:
 帳號 : nagiosadmin  
 密碼 : (之前步驟所建立的)  
 
+  
+
+
 ## Add Monitoring targets to Nagios server  (nagios-client)  
 加入被監控對象 nagios-client
 nagios-client 需要安裝 nrpe and nagios-plugins
@@ -255,3 +257,7 @@ notifications_enabled           0
       sudo service nagios restart
 
 透過 UI 可以發現 Services選單，nagios-client 多了一個 SSH 的監控服務。
+
+## Reference
+http://sites.box293.com/nagios/guides/installing-nagios/4-0-x/ubuntu-14-04    (英文blog)   
+http://askubuntu.com/questions/329323/problem-with-restarting-apache2
