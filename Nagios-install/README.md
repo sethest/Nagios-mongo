@@ -265,6 +265,15 @@ notifications_enabled           0
 * 透過 UI 可以發現 Services選單，nagios-client 多了一個 SSH 的監控服務。
 ![Image4.png](https://github.com/sethest/Nagios-mongo/blob/master/Nagios-install/Image4.png "Services")
 
+PENDING 狀態，預計要等 90秒，才會改成 OK 狀態。
+
+* 加快狀態確認 (Re-schedule the next check of this service) & 啟動通知 (Enable notifications for this service) 
+![Image5.png](https://github.com/sethest/Nagios-mongo/blob/master/Nagios-install/Image5.png "Speed")
+進入後點擊 Commit
+
+* 最後呈現
+![Image6.png](https://github.com/sethest/Nagios-mongo/blob/master/Nagios-install/Image6.png "Final")
+
 ## Reference
 http://sites.box293.com/nagios/guides/installing-nagios/4-0-x/ubuntu-14-04    (英文blog)   
 http://askubuntu.com/questions/329323/problem-with-restarting-apache2
