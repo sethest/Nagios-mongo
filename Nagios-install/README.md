@@ -7,7 +7,7 @@
 軟體: nagios-core 4.1.1, nagios-plugins 2.1.1  
 成果:  
 附檔:  
-參考: http://sites.box293.com/nagios/guides/installing-nagios/4-0-x/ubuntu-14-04    (英文教學)   
+參考: http://sites.box293.com/nagios/guides/installing-nagios/4-0-x/ubuntu-14-04    (英文blog)   
 註 : "環境" 的安裝步驟不在此贅述，請自行安裝 。 本範例 ~ 的路徑為: /home/vagrant  
 
 ## About Nagios  
@@ -201,10 +201,57 @@ allowed_hosts=127.0.0.1 192.168.1.103
     
     
     
-##  go back to your Nagios server (nagios-server)  
-    
+## Configure Monitoring targets (nagios-server)  
+
+讓 server目錄下的 cfg ，都是會被 nagios-server 監控的名單。
+
+    sudo mkdir /usr/local/nagios/etc/servers    
     sudo nano /usr/local/nagios/etc/nagios.cfg
-    
-    
-    
-    
+>
+    ## Find and uncomment the following line ##
+    cfg_dir=/usr/local/nagios/etc/servers
+
+新增 clients.cfg (檔名可換)
+
+    sudo nano /usr/local/nagios/etc/servers/clients.cfg
+>
+    define host{
+    use                             linux-server
+    host_name                       nagios-client
+    alias                           server
+    address                         192.168.1.104
+    max_check_attempts              5
+    check_period                    24x7
+    notification_interval           30
+    notification_period             24x7
+    }
+
+重啟 nagios
+
+    sudo service nagios restart
+
+註解 : host_name 是顯示在 UI 的名字，所以也可以命名成 client-001。  
+
+透過 UI 可以發現 Hosts 多了一台 nagios-client
+
+## Define services   (nagios-server)  
+設定 nagios-client 要被監控的服務。
+假設是 SSHappend 下列內容到 clients.cfg。
+
+    sudo nano /usr/local/nagios/etc/servers/clients.cfg
+>
+```
+define service {                                    
+use                             generic-service     
+host_name                       nagios-client
+service_description             SSH                 
+check_command                   check_ssh           
+notifications_enabled           0                   
+}                                                   
+```
+
+重啟 nagios
+
+      sudo service nagios restart
+
+透過 UI 可以發現 Services選單，nagios-client 多了一個 SSH 的監控服務。
