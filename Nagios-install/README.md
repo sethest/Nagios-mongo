@@ -126,13 +126,13 @@ sudo make install
 ```
 
 ## Configure Nagios  (nagios-server)  
-Nagios 的配置文件樣本，位於 /usr/local/nagios/etc 目錄下。 這些配置文件應該可以正常工作了。
+(可選) Nagios 的配置文件樣本，位於 /usr/local/nagios/etc 目錄下。 這些配置文件應該可以正常工作了。
 然而，你可以設定 /usr/local/nagios/etc/objects/contacts.cfg 裡面的 email address，方便接收到示警。  
 
       sudo nano /usr/local/nagios/etc/objects/contacts.cfg
 
 
-若想限制登入nagios console的 IP，可以在 /etc/apache2/sites-enabled/nagios.conf 裡面設定
+(可選) 若想限制登入nagios console的 IP，可以在 /etc/apache2/sites-enabled/nagios.conf 裡面設定
 
       sudo nano /etc/apache2/sites-enabled/nagios.conf
 
