@@ -230,9 +230,9 @@ allowed_hosts=127.0.0.1 192.168.1.103
 
     sudo service nagios restart
 
-註解 : host_name 是顯示在 UI 的名字，所以也可以命名成 client-001。  
+host_name 是顯示在 UI 的名字，所以也可以命名成 client-001。  
 
-透過 UI 可以發現 Hosts 多了一台 nagios-client
+透過 UI 可以發現 Hosts 選單，多了一台 nagios-client。
 
 ## Define services   (nagios-server)  
 設定 nagios-client 要被監控的服務。
