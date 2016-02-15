@@ -170,7 +170,12 @@ Enable Apache’s rewrite and cgi modules:
 帳號 : nagiosadmin  
 密碼 : (之前步驟所建立的)  
 
+* 登入 nagios UI  
+![Image1.png](https://github.com/sethest/Nagios-mongo/blob/master/Nagios-install/Image1.png "帳號 nagiosadmin")
   
+* 登入畫面 (可以點進選單 Hosts、Services 看看)
+![Image2.png](https://github.com/sethest/Nagios-mongo/blob/master/Nagios-install/Image2.png "nagios UI")
+
 
 
 ## Add Monitoring targets to Nagios server  (nagios-client)  
