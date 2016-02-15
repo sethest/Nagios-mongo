@@ -26,7 +26,7 @@ Nagios是一個企業級的開源軟件，可用於監控網絡和硬體設施�
 - 減少停機造成的損失
 
 ## Scenario  
-遠端監控 services時,  
+監控遠端 services時,  
 nagios-server (伺服器端 = 監控端)會安裝 : nagios-core, nagios-plugins, nrpe-plugins  
 nagios-client (用戶端 = 被監控端)會安裝 : nagios-plugins, nrpe  
 註：core-4 好像沒有下載 xinetd 服務 (用來交握)  
