@@ -4,9 +4,10 @@
 目的: Install Nagios core 4.1.1 on Ubuntu 14.04.3 LTS  
 流程:  
 環境: VirtualBox 4.3.18, Vagrant 1.7.2, Ubuntu 14.04.3 LTS, Java 1.7.0_80-64bit, MongoDB 3.0.8  
-軟體: Nagios-core 4.1.1  
-成果:   
+軟體: nagios-core 4.1.1, nagios-plugins 2.1.1  
+成果:  
 附檔:  
+參考: http://sites.box293.com/nagios/guides/installing-nagios/4-0-x/ubuntu-14-04    (英文教學)   
 註 : "環境" 的安裝步驟不在此贅述，請自行安裝 。 本範例 ~ 的路徑為: /home/vagrant  
 
 ## About Nagios  
@@ -45,17 +46,35 @@ Hostname : nagios-client
 
 
 ## Prerequisites   
-nagios-server 需要安裝 LAMP 
+nagios-server 需要安裝 LAMP ，否則會出錯。(有參考其他的blog)
 ```
-sudo apt-get -y install wget build-essential apache2 apache2-utils unzip php5 openssl perl make php5-gd wget libgd2-xpm-dev libapache2-mod-php5 libperl-dev libssl-dev daemon  #(參考其他人的 blog ， 因為原本的沒有安裝 apache2 ，會出錯。)
+sudo apt-get update
+sudo apt-get -y install wget build-essential apache2 apache2-utils unzip php5 openssl perl make php5-gd wget libgd2-xpm-dev libapache2-mod-php5 libperl-dev libssl-dev daemon 
 ```
 
+## Create Nagios User And Group  
+新增一個 nagios 使用者
+```
+sudo useradd -m nagios
+sudo passwd nagios
+```
+新增一個 nagcmd 群組，讓外部指令可以透過 web 介面提交。
+將 nagios 和 apache 使用者，加入此群組。
+```
+sudo groupadd nagcmd
+sudo usermod -a -G nagcmd nagios
+sudo usermod -a -G nagcmd www-data
+```
 
+## Download Nagios And Plugins
+到 http://sourceforge.net/projects/nagios/files/  下載最新的 nagios-core  
+```
+wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.1.1.tar.gz
+```
 
+到 http://nagios-plugins.org/download/   下載最新的 nagios-plugin  
+Nagios plugins 讓你透過 Nagios 監控 hosts, devices, services, protocols, and applications
+```
+wget http://www.nagios-plugins.org/download/nagios-plugins-2.1.1.tar.gz
+```
 
-
-
-
-http://sourceforge.net/projects/nagios/files/   (下載 Nagios-core)
-http://nagios-plugins.org/download/             (下載 Nagios-plugin)
-http://sites.box293.com/nagios/guides/installing-nagios/4-0-x/ubuntu-14-04    (英文教學) 
