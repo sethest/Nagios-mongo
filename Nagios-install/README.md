@@ -239,7 +239,8 @@ allowed_hosts=127.0.0.1 192.168.1.103
 
 host_name 是顯示在 UI 的名字，所以也可以命名成 client-001。  
 
-透過 UI 可以發現 Hosts 選單，多了一台 nagios-client。
+* 透過 UI 可以發現 Hosts 選單，多了一台 nagios-client。
+![Image3.png](https://github.com/sethest/Nagios-mongo/blob/master/Nagios-install/Image3.png "Hosts")
 
 ## Define services   (nagios-server)  
 設定 nagios-client 要被監控的服務。
@@ -261,7 +262,8 @@ notifications_enabled           0
 
       sudo service nagios restart
 
-透過 UI 可以發現 Services選單，nagios-client 多了一個 SSH 的監控服務。
+* 透過 UI 可以發現 Services選單，nagios-client 多了一個 SSH 的監控服務。
+![Image4.png](https://github.com/sethest/Nagios-mongo/blob/master/Nagios-install/Image4.png "Services")
 
 ## Reference
 http://sites.box293.com/nagios/guides/installing-nagios/4-0-x/ubuntu-14-04    (英文blog)   
