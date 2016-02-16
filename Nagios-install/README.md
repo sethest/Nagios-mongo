@@ -318,9 +318,9 @@ sudo make install-plugin
 ```
 
 * apt-get 安裝
-
-
+```
       sudo apt-get install nagios-nrpe-plugin
+```
 
 執行檔路徑
 1. 手動編譯安裝 /usr/local/nagios/libexec/check_nrpe
