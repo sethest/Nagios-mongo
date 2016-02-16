@@ -26,9 +26,35 @@ Nagios是一個企業級的開源軟件，可用於監控網絡和硬體設施�
 
 ## Scenario  
 監控遠端 services時,  
-nagios-server (伺服器端 = 監控端)會安裝 : nagios-core, nagios-plugins, nrpe-plugins  
-nagios-client (用戶端 = 被監控端)會安裝 : nagios-plugins, nrpe  
+nagios-server (伺服器端 = 監控端)會安裝 : nagios4-core, nagios-plugins, nrpe-plugin  
+nagios-client (用戶端 = 被監控端)會安裝 : nagios-plugins, nrpe-server  
 註：core-4 好像沒有下載 xinetd 服務 (用來交握)  
+
+安裝方式  
+1. 下載編譯後安裝(手動)  
+2. 套件安裝(apt-get)  
+
+>
+(apt-get 沒有看到 nagios4-core)  
+nagios3                    
+nagios3-cgi                
+nagios3-common             
+nagios3-core
+nagios3-dbg 
+nagios3-doc
+nagios-images     
+nagios-nrpe-plugin
+nagios-nrpe-server
+nagios-plugin-check-multi  
+nagios-plugins             
+nagios-plugins-basic
+nagios-plugins-common          
+nagios-plugins-contrib     
+nagios-plugins-extra  
+nagios-plugins-openstack        
+nagios-plugins-standard
+nagios-snmp-plugins  
+
 
 * #### Nagios server  
 Operating system : Ubuntu 14.04.3 Server  
@@ -180,7 +206,7 @@ Enable Apache’s rewrite and cgi modules:
 
 ## Add Monitoring targets to Nagios server  (nagios-client)  
 加入被監控對象 nagios-client
-nagios-client 需要安裝 nrpe and nagios-plugins
+nagios-client 需要安裝 nrpe and nagios-plugins (也可改用 apt-get 安裝，而非下載後編譯安裝。)
 
 ```
 sudo apt-get update
