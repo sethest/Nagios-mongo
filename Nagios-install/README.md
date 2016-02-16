@@ -322,9 +322,9 @@ sudo make install-plugin
       sudo apt-get install nagios-nrpe-plugin
 ```
 
-執行檔路徑
-1. 手動編譯安裝 /usr/local/nagios/libexec/check_nrpe
-2. apt-get 安裝 /usr/lib/nagios/plugins/check_nrpe
+執行檔路徑   
+1. 手動編譯安裝 /usr/local/nagios/libexec/check_nrpe  
+2. apt-get 安裝 /usr/lib/nagios/plugins/check_nrpe  
 
 ## Reference
 http://sites.box293.com/nagios/guides/installing-nagios/4-0-x/ubuntu-14-04    (英文blog)   
