@@ -30,7 +30,7 @@ nagios-server (伺服器端 = 監控端)會安裝 : nagios4, nagios-plugins, nag
 nagios-client (用戶端 = 被監控端)會安裝 : nagios-plugins, nagios-nrpe-server  
 註：core-4 好像沒有下載 xinetd 服務 (用來交握)  
 
-安裝方式  
+安裝方式  (注意 : 預設安裝路徑可能不同)   
 1. 下載編譯後安裝(手動)  
 2. 套件安裝(apt-get)  
 
@@ -205,8 +205,8 @@ Enable Apache’s rewrite and cgi modules:
 
 
 ## Add Monitoring targets to Nagios server  (nagios-client)  
-加入被監控對象 nagios-client
-nagios-client 需要安裝 nrpe and nagios-plugins (也可改用 apt-get 安裝，而非下載後編譯安裝。)
+加入被監控對象 nagios-client  
+nagios-client 需要安裝 nrpe and nagios-plugins (這裡用 apt-get 安裝，而非下載後編譯安裝。)
 
 ```
 sudo apt-get update
