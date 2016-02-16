@@ -300,6 +300,30 @@ PENDING 狀態，預計要等 90秒，才會改成 OK 狀態。
 * 最後呈現
 ![Image6.png](https://github.com/sethest/Nagios-mongo/blob/master/Nagios-install/Image6.png "Final")
 
+
+## Install nrpe-plugin manually  (nagios-server)
+若沒有安裝 nrpe-plugin，會導致沒有 check_nrpe 執行檔
+
+* 手動編譯安裝
+```
+wget http://sourceforge.net/projects/nagios/files/nrpe-2.x/nrpe-2.15/nrpe-2.15.tar.gz
+tar zxvf nrpe-2.15.tar.gz
+rm nrpe-2.15.tar.gz
+cd nrpe-2.15
+sudo apt-get install libssl-dev
+./configure --prefix=/usr/local/nagios/ --with-ssl=/usr/bin/openssl --with-ssl-lib=/usr/lib/x86_64-linux-gnu   
+make all
+sudo make install-plugin
+```
+
+* apt-get 安裝
+
+     sudo apt-get install nagios-nrpe-plugin
+
+執行檔路徑
+1. 手動編譯安裝 /usr/local/nagios/libexec/check_nrpe
+2. apt-get 安裝 /usr/lib/nagios/plugins/check_nrpe
+
 ## Reference
 http://sites.box293.com/nagios/guides/installing-nagios/4-0-x/ubuntu-14-04    (英文blog)   
 http://askubuntu.com/questions/329323/problem-with-restarting-apache2
