@@ -302,8 +302,8 @@ PENDING 狀態，預計要等 90秒，才會改成 OK 狀態。
 
 
 ## Install nrpe-plugin manually  (nagios-server)
-若沒有安裝 nrpe-plugin，會導致沒有 check_nrpe 執行檔
-測試不同安裝方式的執行檔路徑
+若沒有安裝 nrpe-plugin，會導致沒有 check_nrpe 執行檔  
+比較不同安裝方式的執行檔路徑  
 
 * 手動編譯安裝
 ```
