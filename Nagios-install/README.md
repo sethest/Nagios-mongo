@@ -26,8 +26,8 @@ Nagios是一個企業級的開源軟件，可用於監控網絡和硬體設施�
 
 ## Scenario  
 監控遠端 services時,  
-nagios-server (伺服器端 = 監控端)會安裝 : nagios4-core, nagios-plugins, nrpe-plugin  
-nagios-client (用戶端 = 被監控端)會安裝 : nagios-plugins, nrpe-server  
+nagios-server (伺服器端 = 監控端)會安裝 : nagios4, nagios-plugins, nagios-nrpe-plugin  
+nagios-client (用戶端 = 被監控端)會安裝 : nagios-plugins, nagios-nrpe-server  
 註：core-4 好像沒有下載 xinetd 服務 (用來交握)  
 
 安裝方式  
@@ -35,7 +35,7 @@ nagios-client (用戶端 = 被監控端)會安裝 : nagios-plugins, nrpe-server
 2. 套件安裝(apt-get)  
 
 >
-(apt-get 沒有看到 nagios4-core)  
+(apt-get 沒有看到 nagios4)  
 nagios3                    
 nagios3-cgi                
 nagios3-common             
