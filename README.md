@@ -210,3 +210,7 @@ define service {
         check_command           check_mongodb_query!
 }
 ```
+
+## Reference
+http://www.thegeekstuff.com/2013/10/nagios-check-mongodb-plugin/
+https://github.com/mzupan/nagios-plugin-mongodb
