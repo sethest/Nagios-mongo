@@ -61,7 +61,7 @@ mv nagios-plugin-mongodb-master nagios-plugin-mongodb
     sudo pip install pymongo==2.8
 
 不要使用 sudo pip install ~~requirements~~    
-pymongo 不要安裝 3.x 否則會有一堆服務有錯誤訊息   
+pymongo 不要安裝 3.x 否則會有很多監控的 Status Information 如下:   
 
 > CRITICAL - General MongoDB Error: can't set attribute
 
