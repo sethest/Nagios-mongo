@@ -141,7 +141,7 @@ row_count                   ( -d, -c, -W, -C, -D)                             �
 write_data_files            ( -W, -C, -D)                                     寫資料目錄
 ```
 
-lock: 只適用 MongoDB 2.x  (MongoDB 3.x doesn't report on global locks)    
+註 : "lock" 只適用 MongoDB 2.x  (MongoDB 3.x doesn't report on global locks)    
 
 ## Add check_mongodb Command Definition
 設定 command.cfg
