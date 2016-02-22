@@ -85,23 +85,24 @@ CRITICAL - General MongoDB Error: could not connect to 127.0.0.1:27017: (111, 'C
 
 參數解釋
 ```
--H                  default='127.0.0.1'     host                                          
+-H                  default=127.0.0.1       host                                          
 -P                  default=27017           port                                          
--u                                          username    
--p                                          passwd    
--W                                          warning    
--C                                          critical    
+-u                  default=None            username    
+-p                  default=None            passwd    
+-W                  default=None            warning    
+-C                  default=None            critical    
 -A                  default=connect         action                                        
---max-lag                                   複製的延遲上限 (前提:要做RS)    
---mapped-memory                             用"映射記憶體"取代"常駐記憶體" (前提: 常駐記憶體不可讀)
--D                                          開啟輸出效能數據(畫圖用)    
--d                  default='admin'         指定DB                                        
---all-databases                             檢查所有DB(-A database_size)    
--s                                          用ssl安全協議連接    
--r                                          連接到RS
--q                  default='query'         用 (-A queries_per_second)來確認查詢的型態[query|insert|update|delete|getmore|command]   
--c                                          指定collection     default='admin'
--T                                          花費時間去檢查錯誤的頁數     default=1
+--max-lag           default=False           複製的延遲上限 (前提:要做RS)    
+--mapped-memory     default=False           用"映射記憶體"取代"常駐記憶體" (前提: 常駐記憶體不可讀)
+-D                  default=False           開啟輸出效能數據(畫圖用)    
+-d                  default=admin           指定DB                                        
+--all-databases     default=False           檢查所有DB(-A database_size)    
+-s                  default=False           用ssl安全協議連接    
+-r                  default=None            連接到RS
+-q                  default=query           用 (-A queries_per_second)來確認查詢的型態[query|insert|update|delete|getmore|command]   
+-c                  default=admin           指定collection     
+-T                  default=1               花費時間去檢查錯誤的頁數        
+-M                  defualt=2               MongoDB使用的版本 (2 或 3)
 ```
 
 -A    
@@ -148,7 +149,7 @@ write_data_files            ( -W, -C, -D)                                     �
 
     sudo nano /usr/local/nagios/etc/objects/commands.cfg
 
-新增下列五種 nagios-mongo CMD  (待修)
+新增下列五種 nagios-mongo CMD  
 ```
 define command {
 command_name check_mongodb
@@ -183,38 +184,7 @@ command_line $USER1$/nagios-plugin-mongodb/check_mongodb.py -H $HOSTADDRESS$ -A 
 
     sudo nano /usr/local/nagios/etc/servers/clients.cfg
 
-```
-define service {
-        use                     generic-service
-        host_name               nagios-client
-        service_description     check_mongodb
-        check_command           check_mongodb!connect!27017!2!4
-}
-define service {
-        use                     generic-service
-        host_name               nagios-client
-        service_description     check_mongodb_database_size
-        check_command           check_mongodb_database!database_size!1024!2048!test
-}
-define service {
-        use                     generic-service
-        host_name               nagios-client
-        service_description     check_mongodb_collection
-        check_command           check_mongodb_collection!
-}
-define service {
-        use                     generic-service
-        host_name               nagios-client
-        service_description     check_mongodb_replicaset
-        check_command           check_mongodb_replicaset!
-}
-define service {
-        use                     generic-service
-        host_name               nagios-client
-        service_description     check_mongodb_query
-        check_command           check_mongodb_query!
-}
-```
+詳見附件 clients.cfg
 
 ## Reference
 http://www.thegeekstuff.com/2013/10/nagios-check-mongodb-plugin/
