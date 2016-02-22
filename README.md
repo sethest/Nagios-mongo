@@ -105,7 +105,7 @@ CRITICAL - General MongoDB Error: could not connect to 127.0.0.1:27017: (111, 'C
 ```
 
 -A    
-動作解釋(default=connect) and 會檢查的參數
+動作解釋(default=connect) and 會檢查的參數   
 ```
 asserts                     ( -H, -W, -C, -D)                                 斷言
 chunks_balance              ( -d, -c, -W, -C)                                 塊平衡
@@ -140,6 +140,8 @@ replset_state               ( -D, -W, -C)                                     �
 row_count                   ( -d, -c, -W, -C, -D)                             資料筆數
 write_data_files            ( -W, -C, -D)                                     寫資料目錄
 ```
+
+lock: 只適用 MongoDB 2.x  (MongoDB 3.x doesn't report on global locks)    
 
 ## Add check_mongodb Command Definition
 設定 command.cfg
