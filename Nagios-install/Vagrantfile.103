@@ -1,0 +1,24 @@
+﻿# 若 box 檔案放在遠端，可透過 FTP下載後安裝。
+# C:\> vagrant box add trusty64_mongo3.0.8_java1.7.8 ftp://btserver:qazxsw@172.17.24.211//home/btserver/swap/Vagrant/trusty64_mongo3.0.8_java1.7.8.box
+
+# 若 box 檔案已經在 local端，可直接安裝。
+# C:\> vagrant box add  trusty64_mongo3.0.8_java1.7.8  trusty64_mongo3.0.8_java1.7.8.box
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "trusty64_mongo3.0.8_java1.7.8"
+  config.vm.hostname = "nagios-server"
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 4096
+    v.cpus = 2
+  end
+  config.vm.network :private_network, ip: "192.168.1.103"
+#  config.vm.network :public_network, ip: "192.168.0.11"
+  config.vm.network "forwarded_port", guest: 80, host: 8888  
+#  config.vm.network "forwarded_port", guest: 8080, host: 8080
+#  config.vm.network "forwarded_port", guest: 8081, host: 8081
+#  config.vm.network "forwarded_port", guest: 9200, host: 9200  
+#  config.vm.network "forwarded_port", guest: 28017, host: 28017  
+  config.vm.synced_folder "shell", "/home/vagrant/shell" 
+#  config.vm.provision "shell", inline: ". /home/vagrant/test.sh"
+  config.vm.provision "shell", inline: "echo START PLAY VAGRANT", run:"always"
+end
