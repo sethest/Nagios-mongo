@@ -327,6 +327,7 @@ sudo make install-plugin
 2. apt-get 安裝 /usr/lib/nagios/plugins/check_nrpe  
 
 ## Reference
+http://www.unixmen.com/how-to-install-nagios-core-4-1-1-in-ubuntu-15-10/  
 http://sites.box293.com/nagios/guides/installing-nagios/4-0-x/ubuntu-14-04       
 http://askubuntu.com/questions/329323/problem-with-restarting-apache2  
-http://www.unixmen.com/how-to-install-nagios-core-4-1-1-in-ubuntu-15-10/  
+
