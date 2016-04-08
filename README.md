@@ -187,5 +187,5 @@ command_line $USER1$/nagios-plugin-mongodb/check_mongodb.py -H $HOSTADDRESS$ -A 
 詳見附件 clients.cfg
 
 ## Reference
-http://www.thegeekstuff.com/2013/10/nagios-check-mongodb-plugin/
+http://www.thegeekstuff.com/2013/10/nagios-check-mongodb-plugin/  
 https://github.com/mzupan/nagios-plugin-mongodb
